@@ -1,0 +1,28 @@
+query CartInput {
+  cart {
+    lines {
+      id
+      quantity
+      merchandise {
+        ... on ProductVariant {
+          id
+        }
+      }
+    }
+    cost {
+      subtotalAmount {
+        amount
+        currencyCode
+      }
+    }
+  }
+  discount {
+    discountClasses
+    metafield(
+      namespace: "$app:discount-ui-gwp"
+      key: "gwp-parks"
+    ) {
+      value
+    }
+  }
+}

@@ -1,0 +1,27 @@
+query DeliveryInput($namespace: String!, $key: String!) {
+  cart {
+    lines {
+      id
+      quantity
+      merchandise {
+        ... on ProductVariant {
+          id
+        }
+      }
+    }
+    cost {
+      subtotalAmount {
+        amount
+        currencyCode
+      }
+    }
+  }
+  discount {
+    metafield(
+      namespace: $namespace
+      key: $key
+    ) {
+      value
+    }
+  }
+}
